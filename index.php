@@ -310,7 +310,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       <div class="contact-right">
         <?php if ($success): ?>
-          <div class="success">Obrigado — a sua mensagem foi recebida com sucesso. Responderemos em breve.</div>
+          <div class="success">Thank you for your message!</div>
         <?php endif; ?>
 
         <?php if (!empty($errors)): ?>
