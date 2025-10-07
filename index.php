@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alaska Marketing — Demo</title>
+  <title>Alaska Marketing</title>
   <style>
     :root{
       --accent:#118fd6;
