@@ -134,14 +134,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <header>
   <div class="container nav">
-    <div class="brand">Alaska Marketing</div>
+    <a href="index.php" class="brand">Alaska Marketing</a>
     <nav>
       <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#why">About</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a class="btn-cta" href="#contact">Get Started</a></li>
+        <li><a href="services.php">Services</a></li>
+        <li><a href="about.php">About</a></li>
+        <li><a href="team.php">Team</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a class="btn-cta" href="contact.php">Get Started</a></li>
       </ul>
     </nav>
   </div>
