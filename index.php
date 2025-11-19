@@ -276,13 +276,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="role">Founder & CEO</div>
         <p class="muted">Leading Alaska Marketing with expertise in digital strategy and business growth, bringing years of experience in scaling businesses.</p>
       </div>
-
+<!--
       <div class="profile">
         <div class="initials">FM</div>
         <h3>Francine Montibeller</h3>
         <div class="role">Co-Founder & Creative Director</div>
         <p class="muted">Creative visionary behind our brand identity and content strategies, specializing in visual design and campaigns.</p>
       </div>
+  -->
     </div>
   </div>
 </section>
