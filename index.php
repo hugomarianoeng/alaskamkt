@@ -1,10 +1,10 @@
 <?php
-// index.php - simples handler que grava contactos em messages.txt
+require_once __DIR__ . '/config.php';
+
 $success = false;
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Sanitizar entradas
     $first = trim(filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_STRING));
     $last = trim(filter_input(INPUT_POST, 'last_name', FILTER_SANITIZE_STRING));
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
@@ -17,25 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$message) $errors[] = "Por favor, escreva uma mensagem.";
 
     if (empty($errors)) {
-        // Preparar linha a gravar
-        $entry = sprintf(
-            "[%s] %s %s <%s> | %s\nMessage: %s\n\n",
-            date('Y-m-d H:i:s'),
-            $first,
-            $last,
-            $email,
-            $company,
-            $message
-        );
-
-        $file = __DIR__ . '/messages.txt';
-        // Tentar gravar (cria o ficheiro se não existir)
-        if (file_put_contents($file, $entry, FILE_APPEND | LOCK_EX) !== false) {
+        try {
+            $db = getDBConnection();
+            $stmt = $db->prepare("INSERT INTO leads (first_name, last_name, email, company, message) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$first, $last, $email, $company, $message]);
             $success = true;
-            // Limpar valores para não reaparecer no form
             $first = $last = $email = $company = $message = '';
-        } else {
-            $errors[] = "Não foi possível gravar a sua mensagem. Verifique permissões do ficheiro messages.txt.";
+        } catch (Exception $e) {
+            $errors[] = "Erro ao gravar: " . $e->getMessage();
         }
     }
 }
